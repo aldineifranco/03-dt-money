@@ -34,26 +34,7 @@ export function Transactions() {
               <td>Venda</td>
               <td>13/04/2022</td>
             </tr>
-            <tr>
-              <td width="50%">Aluguel do apartamento</td>
-              <td>
-                <PriceHighLight variant="outcome">
-                  R$ -5.000,00
-                </PriceHighLight>
-              </td>
-              <td>Venda</td>
-              <td>13/04/2022</td>
-            </tr>
-            <tr>
-              <td width="50%">Computador</td>
-              <td>
-                <PriceHighLight variant="income">
-                  R$ 6.000,00
-                </PriceHighLight>
-              </td>
-              <td>Venda</td>
-              <td>13/04/2022</td>
-            </tr>
+            
           </tbody>
         </TransactionsTable>
       </TransactionsContainer>
