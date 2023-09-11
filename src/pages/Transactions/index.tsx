@@ -4,7 +4,7 @@ import { Summary } from "../../components/Summary";
 import { SearchForm } from "./components/SearchForm";
 import { PriceHighLight, TransactionsContainer, TransactionsTable } from './styles';
 import { TransactionsContext } from "../../contexts/TransactionsContext";
-import { priceFormatter } from "../../utils/formatter";
+import { dateFormatter, priceFormatter } from "../../utils/formatter";
 
 interface Transactions {
   id: number,
@@ -39,7 +39,7 @@ export function Transactions() {
                   </PriceHighLight>
                 </td>
                 <td>{transaction.category}</td>
-                <td>{transaction.createdAt}</td>
+                <td>{dateFormatter.format(new Date(transaction.createdAt))}</td>
               </tr>
             ))}
         

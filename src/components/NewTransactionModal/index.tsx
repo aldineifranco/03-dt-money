@@ -4,6 +4,9 @@ import * as Dialog from '@radix-ui/react-dialog';
 import * as z from 'zod';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Controller, useForm } from "react-hook-form";
+import { api } from "../../lib/axios";
+import { useContext } from "react";
+import { TransactionsContext } from "../../contexts/TransactionsContext";
 
 const newTransactionFormSchema = z.object({
   description: z.string(),
@@ -15,11 +18,14 @@ const newTransactionFormSchema = z.object({
 type newTransactionFormInputs = z.infer<typeof newTransactionFormSchema>
 
 export const NewTransactionModal = () => {
+  const { createTransaction } = useContext(TransactionsContext)
+
   const {
-    control, 
+    control,
     register,
     handleSubmit,
-    formState: { isSubmitting } 
+    formState: { isSubmitting },
+    reset,
   } = useForm<newTransactionFormInputs>({
     resolver: zodResolver(newTransactionFormSchema),
     defaultValues: {
@@ -28,8 +34,16 @@ export const NewTransactionModal = () => {
   })
 
   async function handleCreateNewTransaction(data: newTransactionFormInputs) {
-    await new Promise(resolve => setTimeout(resolve, 2000))
-    console.log(data)
+    const { description, price, category, type } = data;
+
+    await createTransaction({
+      description,
+      price,
+      category,
+      type
+    })
+
+    reset();
   }
 
 
@@ -63,7 +77,7 @@ export const NewTransactionModal = () => {
             {...register('category')}
           />
 
-          <Controller 
+          <Controller
             control={control}
             name="type"
             render={({ field }) => {
