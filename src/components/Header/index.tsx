@@ -1,8 +1,8 @@
-import { HeaderContainer, HeaderContent, NewTransactionButton } from "./styles";
-import Logo from '../../assets/logo.svg';
-import * as Dialog from '@radix-ui/react-dialog';
-import { XCircle } from 'phosphor-react';
-import { NewTransactionModal } from "../NewTransactionModal";
+/* eslint-disable jsx-a11y/alt-text */
+import { HeaderContainer, HeaderContent, NewTransactionButton } from './styles'
+import Logo from '../../assets/logo.svg'
+import * as Dialog from '@radix-ui/react-dialog'
+import { NewTransactionModal } from '../NewTransactionModal'
 
 export function Header() {
   return (
@@ -16,10 +16,7 @@ export function Header() {
           </Dialog.Trigger>
 
           <NewTransactionModal />
-
-
         </Dialog.Root>
-
       </HeaderContent>
     </HeaderContainer>
   )
